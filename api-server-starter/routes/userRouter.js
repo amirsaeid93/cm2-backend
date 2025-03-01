@@ -19,6 +19,15 @@ router.post(
 );
 
 router.post(
+  '/signup',
+  [
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'Password must be at least 6 characters').isLength({ min: 6 }),
+  ],
+  registerUser
+);
+
+router.post(
   '/login',
   [
     check('email', 'Please include a valid email').isEmail(),
